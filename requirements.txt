@@ -1,2 +1,2 @@
-flask=2.2.2
-nextcord=2.1.0
+flask==2.2.2
+nextcord==2.1.0
