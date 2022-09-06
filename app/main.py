@@ -32,7 +32,7 @@ async def on_ready():
 	print(f'Logged in as {client.user} (ID: {client.user.id})')
 	await client.change_presence(activity=nextcord.Game(name=f'{version}'))
 
-@client.slash_command(name='Ping', description='Returns bot latency')
+@client.slash_command(name='ping', description='Returns bot latency')
 async def ping(ctx, interaction):
 	if interaction.type == nextcord.InteractionType.application_command:
 		await client.process_application_commands(interaction)
