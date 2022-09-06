@@ -12,7 +12,7 @@ app = Flask('')
 def home():
 	return 'Running!'
 def run():
-	app.run(debug=True, port=int(os.environ.get('PORT', 33507)))
+	app.run(port=int(os.environ.get('PORT', 33507)))
 def keep_alive():
 	Thread(target=run).start()
 
