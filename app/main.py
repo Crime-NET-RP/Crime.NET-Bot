@@ -16,7 +16,7 @@ def run():
 def keep_alive():
 	Thread(target=run).start()
 
-version = 'Ping Test: try "/ping"'
+version = 'First Release'
 TOKEN = os.environ['DISCORD_TOKEN']
 description = ''
 intents = nextcord.Intents.default()
