@@ -16,7 +16,7 @@ def run():
 def keep_alive():
 	Thread(target=run).start()
 
-version = 'First Release'
+version = 'Command Test'
 TOKEN = os.environ['DISCORD_TOKEN']
 description = 'Crime.NET Bot'
 intents = nextcord.Intents.default()
@@ -41,10 +41,12 @@ async def on_ready():
 	await client.change_presence(activity=nextcord.Game(name=f'{version}'))
 
 @client.slash_command(name='ping', description='Returns bot latency')
-async def ping(ctx, interaction):
-	if interaction.type == nextcord.InteractionType.application_command:
-		await client.process_application_commands(interaction)
-		await interaction.response.send_message(embed(':ping_pong: Pong!', f'{round(client.latency, 1)} ms', 'the `ping` command was used'))
+async def ping(ctx):
+	await ctx.channel.send(embed(':ping_pong: Pong!', f'{round(client.latency, 1)} ms', 'the `ping` command was used'))
+
+@client.slash_command(name='message', description='Sends a message to a user')
+async def message(ctx, user, message: str):
+		await user.send(embed('Message', 'This is a message!', 'the `message` command was used'))
 
 if __name__ == '__main__':
 	keep_alive()
