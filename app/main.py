@@ -33,7 +33,7 @@ async def on_ready():
 	print(f'Logged in as {client.user} (ID: {client.user.id})')
 	await client.change_presence(activity=nextcord.Game(name=f'{version}'))
 
-@client.command()
+@client.slash_command()
 async def ping(ctx, interaction: nextcord.Interaction):
 	await interaction.response.send_message(embed(':ping_pong: Pong!', f'{round(client.latency, 1)} ms', 'the `ping` command was used'))
 
