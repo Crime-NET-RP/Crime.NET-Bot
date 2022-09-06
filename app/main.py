@@ -5,6 +5,8 @@ from flask import Flask
 from boto.s3.connection import S3Connection
 from threading import Thread
 
+load_dotenv()
+
 app = Flask('')
 @app.route('/')
 def home():
@@ -12,10 +14,7 @@ def home():
 def run():
 	app.run(debug=True, port=int(os.environ.get('PORT', 33507)))
 def keep_alive():
-	t = Thread(target=run)
-	t.start()
-
-load_dotenv()
+	Thread(target=run).start()
 
 version = 'Ping Test: try "/ping"'
 TOKEN = os.environ['DISCORD_TOKEN']
