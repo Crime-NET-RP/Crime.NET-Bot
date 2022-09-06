@@ -10,7 +10,7 @@ load_dotenv()
 app = Flask('')
 @app.route('/')
 def home():
-	return "I'm alive"
+	return 'Running!'
 def run():
 	app.run(debug=True, port=int(os.environ.get('PORT', 33507)))
 def keep_alive():
@@ -18,7 +18,7 @@ def keep_alive():
 
 version = 'First Release'
 TOKEN = os.environ['DISCORD_TOKEN']
-description = ''
+description = 'Crime.NET Bot'
 intents = nextcord.Intents.default()
 
 client = commands.Bot(command_prefix='/', description=description, intents=intents)
