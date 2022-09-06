@@ -35,8 +35,7 @@ async def on_ready():
 @client.slash_command(name='Ping', description='Returns bot latency')
 async def ping(ctx, interaction: nextcord.Interaction):
 	if interaction.type == nextcord.InteractionType.application_command:
-		print(interaction)
+		await client.process_application_commands(interaction)
 		await interaction.response.send_message(embed(':ping_pong: Pong!', f'{round(client.latency, 1)} ms', 'the `ping` command was used'))
 
-keep_alive()
 client.run(TOKEN)
