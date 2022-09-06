@@ -1,10 +1,19 @@
-import os
-
-import nextcord
+import nextcord, os
 from dotenv import load_dotenv
 from nextcord.ext import commands
+from flask import Flask
 from boto.s3.connection import S3Connection
-from keep_alive import keep_alive
+from threading import Thread
+
+app = Flask('')
+@app.route('/')
+def home():
+	return "I'm alive"
+def run():
+	app.run(debug=True, port=int(os.environ.get('PORT', 33507)))
+def keep_alive():
+	t = Thread(target=run)
+	t.start()
 
 load_dotenv()
 
