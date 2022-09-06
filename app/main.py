@@ -7,7 +7,6 @@ from boto.s3.connection import S3Connection
 from keep_alive import keep_alive
 
 load_dotenv()
-keep_alive()
 
 version = 'Ping Test: try "/ping"'
 TOKEN = os.environ['DISCORD_TOKEN']
@@ -33,8 +32,11 @@ async def on_ready():
 	print(f'Logged in as {client.user} (ID: {client.user.id})')
 	await client.change_presence(activity=nextcord.Game(name=f'{version}'))
 
-@client.slash_command()
+@client.slash_command(name='Ping', description='Returns bot latency')
 async def ping(ctx, interaction: nextcord.Interaction):
-	await interaction.response.send_message(embed(':ping_pong: Pong!', f'{round(client.latency, 1)} ms', 'the `ping` command was used'))
+	if interaction.type == nextcord.InteractionType.application_command:
+		print(interaction)
+		await interaction.response.send_message(embed(':ping_pong: Pong!', f'{round(client.latency, 1)} ms', 'the `ping` command was used'))
 
+keep_alive()
 client.run(TOKEN)
