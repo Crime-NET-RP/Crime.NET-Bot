@@ -9,7 +9,7 @@ from keep_alive import keep_alive
 load_dotenv()
 keep_alive()
 
-version = 'v-Unreleased'
+version = 'Ping Test: try "/ping"'
 TOKEN = os.environ['DISCORD_TOKEN']
 description = ''
 intents = nextcord.Intents.default()
@@ -34,7 +34,7 @@ async def on_ready():
 	await client.change_presence(activity=nextcord.Game(name=f'{version}'))
 
 @client.command()
-async def ping(ctx):
-	await ctx.send(embed(':ping_pong: Pong!', '{0}'.format(round(client.latency, 1)), 'the `ping` command was used'))
+async def ping(ctx, interaction: nextcord.Interaction):
+	await interaction.response.send_message(embed(':ping_pong: Pong!', f'{round(client.latency, 1)} ms', 'the `ping` command was used'))
 
 client.run(TOKEN)
