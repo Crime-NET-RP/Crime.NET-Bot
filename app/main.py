@@ -42,7 +42,7 @@ async def on_ready():
 
 @client.slash_command(name='ping', description='Returns bot latency')
 async def ping(ctx):
-	await ctx.message.respond(f'Pong! {client.latency * 100} ms')
+	await ctx.respond(f'Pong! {client.latency * 100} ms')
 	await ctx.send(embed=embed(':ping_pong: Pong!', f'{client.latency * 100} ms', f'{ctx.user} used the "ping" command'))
 
 @client.slash_command(name='message', description='Sends a message to a user', dm_permission=False, default_member_permissions=commands.Permissions(administrator=True))
