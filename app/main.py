@@ -35,6 +35,6 @@ async def on_ready():
 
 @client.command()
 async def ping(ctx):
-    await ctx.send(embed(':ping_pong: Pong!', '{0}'.format(round(client.latency, 1)), 'the `ping` command was used'))
+	await ctx.send(embed(':ping_pong: Pong!', '{0}'.format(round(client.latency, 1)), 'the `ping` command was used'))
 
 client.run(TOKEN)
