@@ -42,11 +42,11 @@ async def on_ready():
 
 @client.slash_command(name='ping', description='Returns bot latency')
 async def ping(ctx):
-	await ctx.channel.send(embed(':ping_pong: Pong!', f'{round(client.latency, 1)} ms', 'the `ping` command was used'))
+	await ctx.channel.send(embed=embed(':ping_pong: Pong!', f'{round(client.latency, 1)} ms', 'the `ping` command was used'))
 
 @client.slash_command(name='message', description='Sends a message to a user')
 async def message(ctx, user, message: str):
-	await user.send(embed('Message', 'This is a message!', 'the `message` command was used'))
+	await user.send(embed=embed('Message', 'This is a message!', 'the `message` command was used'))
 
 if __name__ == '__main__':
 	keep_alive()
