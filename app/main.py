@@ -23,8 +23,8 @@ intents = nextcord.Intents.default()
 
 client = commands.Bot(command_prefix='/', description=description, intents=intents)
 
-def embed(title, description, reason):
-	nextcord.Embed(
+def embed(title, description, reason) -> nextcord.Embed:
+	return nextcord.Embed(
 		title=title,
 		description=description,
 		color=0x360404
@@ -46,7 +46,7 @@ async def ping(ctx):
 
 @client.slash_command(name='message', description='Sends a message to a user')
 async def message(ctx, user, message: str):
-		await user.send(embed('Message', 'This is a message!', 'the `message` command was used'))
+	await user.send(embed('Message', 'This is a message!', 'the `message` command was used'))
 
 if __name__ == '__main__':
 	keep_alive()
