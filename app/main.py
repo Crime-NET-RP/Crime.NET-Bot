@@ -41,8 +41,8 @@ async def on_ready():
 	await client.change_presence(activity=nextcord.Game(name=f'{version}'))
 
 @client.slash_command(name='ping', description='Returns bot latency')
-async def ping(interaction, ctx):
-	await interaction.followup.send(embed=embed(':ping_pong: Pong!', f'{client.latency * 100} ms', f'{ctx.user} used the "ping" command'))
+async def ping(interaction):
+	await interaction.followup.send(embed=embed(':ping_pong: Pong!', f'{client.latency * 100} ms', f'{interaction.user} used the "ping" command'))
 
 @client.slash_command(name='message', description='Sends a message to a user', dm_permission=False, default_member_permissions=nextcord.Permissions(administrator=True))
 async def message(ctx, user, message: str):
